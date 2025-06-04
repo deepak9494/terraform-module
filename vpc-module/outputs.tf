@@ -19,11 +19,14 @@ output "db_subnet_ids" {
 }
 
 output "public_route_table_ids" {
-  description = "Public route table IDs"
-  value       = aws_route_table.public[*].id
+  value = [aws_route_table.public_rt.id]
 }
 
 output "private_route_table_ids" {
-  description = "Private route table IDs"
-  value       = aws_route_table.private[*].id
+  value = [
+    aws_route_table.rt_app_1a.id,
+    aws_route_table.rt_app_1b.id,
+    aws_route_table.rt_db_1a.id,
+    aws_route_table.rt_db_1b.id
+  ]
 }
